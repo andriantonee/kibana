@@ -46,6 +46,16 @@
   text-align: center;
 }
 
+.dscDiscoverGrid__cellModalBody {
+  .euiModalBody__overflow {
+    padding: 24px;
+  }
+  
+  &.euiModalBody:last-of-type .euiModalBody__overflow {
+    padding-bottom: 24px;
+  }
+}
+
 .dscTable__flyoutHeader {
   white-space: nowrap;
 }

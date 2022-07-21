@@ -2933,6 +2933,8 @@
     "discover.grid.filterForAria": "Filtrer sur cette {value}",
     "discover.grid.filterOut": "Exclure",
     "discover.grid.filterOutAria": "Exclure cette {value}",
+    "discover.grid.inspect": "Inspecter",
+    "discover.grid.inspectAria": "Inspectez cette {value}",
     "discover.grid.flyout.documentNavigation": "Navigation dans le document",
     "discover.grid.flyout.toastColumnAdded": "La colonne \"{columnName}\" a été ajoutée.",
     "discover.grid.flyout.toastColumnRemoved": "La colonne \"{columnName}\" a été supprimée.",

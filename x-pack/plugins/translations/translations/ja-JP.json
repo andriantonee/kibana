@@ -3027,6 +3027,8 @@
     "discover.grid.filterForAria": "この{value}でフィルターを適用",
     "discover.grid.filterOut": "除外",
     "discover.grid.filterOutAria": "この{value}を除外",
+    "discover.grid.inspect": "検査する",
+    "discover.grid.inspectAria": "この{value}を調べます",
     "discover.grid.flyout.documentNavigation": "ドキュメントナビゲーション",
     "discover.grid.flyout.toastColumnAdded": "列'{columnName}'が追加されました",
     "discover.grid.flyout.toastColumnRemoved": "列'{columnName}'が削除されました",

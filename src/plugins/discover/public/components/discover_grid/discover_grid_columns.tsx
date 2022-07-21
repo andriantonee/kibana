@@ -84,6 +84,7 @@ export function buildEuiGridColumn(
       additional: columnName === '_source' ? undefined : [buildCopyColumnNameButton(columnName)],
     },
     cellActions: indexPatternField ? buildCellActions(indexPatternField) : [],
+    visibleCellActions: 3,
   };
 
   if (column.id === indexPattern.timeFieldName) {

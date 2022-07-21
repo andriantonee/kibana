@@ -11,6 +11,7 @@ import { copyToClipboard, EuiDataGridColumnCellActionProps } from '@elastic/eui'
 import { i18n } from '@kbn/i18n';
 import { DataViewField } from '@kbn/data-views-plugin/public';
 import { DiscoverGridContext, GridContext } from './discover_grid_context';
+import { DiscoverGridCellModalContext } from './discover_grid_cell_modal';
 import { useDiscoverServices } from '../../utils/use_discover_services';
 import { formatFieldValue } from '../../utils/format_value';
 
@@ -85,6 +86,40 @@ export const FilterOutBtn = ({
   );
 };
 
+export const InspectBtn = ({
+  Component,
+  rowIndex,
+  columnId,
+}: EuiDataGridColumnCellActionProps) => {
+  const { indexPattern: dataView, rowsFlattened, rows } = useContext(DiscoverGridContext);
+  const { setModalIsOpen, setModalContent } = useContext(DiscoverGridCellModalContext);
+  const buttonTitle = i18n.translate('discover.grid.inspectAria', {
+    defaultMessage: 'Inspect this {value}',
+    values: { value: columnId },
+  });
+
+  return (
+    <Component
+      onClick={() => {
+        const rowFlattened = rowsFlattened[rowIndex];
+        const field = dataView.fields.getByName(columnId);
+        const value = rowFlattened[columnId];
+
+        setModalIsOpen(true);
+        setModalContent(String(value));
+      }}
+      iconType="inspect"
+      aria-label={buttonTitle}
+      title={buttonTitle}
+      data-test-subj="inspectButton"
+    >
+      {i18n.translate('discover.grid.inspect', {
+        defaultMessage: 'Inspect',
+      })}
+    </Component>
+  );
+};
+
 export const CopyBtn = ({ Component, rowIndex, columnId }: EuiDataGridColumnCellActionProps) => {
   const { indexPattern: dataView, rowsFlattened, rows } = useContext(DiscoverGridContext);
   const { fieldFormats, toastNotifications } = useDiscoverServices();
@@ -134,5 +169,5 @@ export function buildCellActions(field: DataViewField) {
     return undefined;
   }
 
-  return [FilterInBtn, FilterOutBtn];
+  return [InspectBtn, FilterInBtn, FilterOutBtn];
 }
